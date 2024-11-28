@@ -1,6 +1,7 @@
 import axios from "axios";
 import EventSource from "react-native-sse";
 import { OPENAI_API_BASE_URL, OPENAI_HEADERS, ASSISTANT_ID } from "./constants";
+import { ReadableStream } from "web-streams-polyfill";
 
 /**
  * Creates a new conversation thread.

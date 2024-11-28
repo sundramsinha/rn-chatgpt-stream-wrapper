@@ -7,6 +7,7 @@ exports.runThread = exports.fetchThreadMessages = exports.addMessageToThread = e
 const axios_1 = __importDefault(require("axios"));
 const react_native_sse_1 = __importDefault(require("react-native-sse"));
 const constants_1 = require("./constants");
+const web_streams_polyfill_1 = require("web-streams-polyfill");
 /**
  * Creates a new conversation thread.
  * @returns {Promise<string>} The ID of the newly created thread.
@@ -94,7 +95,7 @@ const runThread = async function* (threadId) {
             stream: true,
         }),
     });
-    const stream = new ReadableStream({
+    const stream = new web_streams_polyfill_1.ReadableStream({
         start(controller) {
             // @ts-ignore
             eventSource.addEventListener("thread.message.delta", (event) => {
